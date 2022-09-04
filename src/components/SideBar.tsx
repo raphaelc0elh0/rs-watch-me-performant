@@ -1,4 +1,6 @@
+import { memo } from "react";
 import { Button } from "./Button";
+import { SideBarButton } from "./SideBarButton";
 
 interface SideBarProps {
   genres: Array<{
@@ -21,16 +23,14 @@ export function SideBar({
 
       <div className="buttons-container">
         {genres.map(genre => (
-          <Button
+          <SideBarButton
             key={String(genre.id)}
-            title={genre.title}
-            iconName={genre.name}
+            genre={genre}
             onClick={() => buttonClickCallback(genre.id)}
-            selected={selectedGenreId === genre.id}
+            isSelected={selectedGenreId === genre.id}
           />
         ))}
       </div>
-
     </nav>
   )
 }
